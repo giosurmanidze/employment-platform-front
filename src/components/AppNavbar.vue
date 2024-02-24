@@ -1,32 +1,38 @@
 <script setup>
-import { ref } from 'vue'
-import TextField from '@/components/TextField.vue'
-import { Form } from 'vee-validate'
-import { useLoginSubmit } from '@/services/index'
+import { ref } from "vue";
+import TextField from "@/components/TextField.vue";
+import { Form } from "vee-validate";
+import { useLoginSubmit } from "@/services/index";
+import { useModalStore } from "@/stores/modal/useModalStore";
+import AlertModal from "./AlertModal.vue";
 
-const showModal = ref(false)
+const showModal = ref(false);
 
-const { submit, Error } = useLoginSubmit()
+const { submit, Error } = useLoginSubmit();
+const { toggleShowErrorMessageModal } = useModalStore();
+const modalStore = useModalStore();
 
 const openModal = () => {
-  showModal.value = true
-  document.body.classList.add('no-scroll')
-}
+  showModal.value = true;
+  document.body.classList.add("no-scroll");
+};
 
 const closeModal = () => {
-  showModal.value = false
-  document.body.classList.remove('no-scroll')
-  Error.value = ''
-}
+  showModal.value = false;
+  document.body.classList.remove("no-scroll");
+  Error.value = "";
+  modalStore.showErrorMessageModal = false;
+};
 </script>
 
 <template>
   <div class="w-full bg-gray-200 h-16">
     <button @click="openModal">Log in</button>
     <!-- Modal -->
+
     <div
       v-if="showModal"
-      class="fixed inset-0 flex justify-center bg-gray-500 bg-opacity-50"
+      class="fixed inset-0 flex justify-center bg-gray-500 bg-opacity-50 xs:ml-2"
       @click="closeModal"
     >
       <div class="bg-white pt-4 rounded-2xl h-[23rem] w-[32rem] mt-10" @click.stop>
@@ -39,17 +45,22 @@ const closeModal = () => {
           </div>
           <div class="h-[1px] bg-gray-200 w-full mt-4"></div>
         </div>
-
         <!-- input fields -->
         <Form
           @submit="submit"
           v-slot="{ errors, meta }"
-          class="flex flex-col items-center justify-center mt-4 gap-1"
+          class="flex flex-col items-center justify-center mt-4 gap-1 relative"
         >
+          <alert-modal
+            classes="right-30 top-[-6rem] absolute"
+            v-if="modalStore.showErrorMessageModal"
+            :alertUpdate="toggleShowErrorMessageModal"
+            :bottom_locale_text="Error"
+          />
           <text-field
             name="username"
             type="text"
-            label="username"
+            label="მომხმარებლის სახელი / ელ.ფოსტა"
             rules="required"
             :error="Error"
             :has-error="errors.username"
@@ -58,7 +69,7 @@ const closeModal = () => {
             name="password"
             type="password"
             rules="required"
-            label="password"
+            label="პაროლი"
             :has-error="errors.password"
           />
           <div
