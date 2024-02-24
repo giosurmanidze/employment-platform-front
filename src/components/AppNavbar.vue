@@ -21,8 +21,7 @@
         <!-- input fields -->
         <div class="flex flex-col items-center justify-center mt-4 gap-1">
           <text-field name="username" type="text" label="username" />
-          <text-field name="password" />
-
+          <text-field name="password" type="password" label="password" />
           <div
             class="flex w-[90%] font-medium text-[#8f9b9a] text-[0.775rem] underline cursor-pointer"
           >
@@ -49,20 +48,20 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import TextField from "@/components/TextField.vue";
+import { ref } from 'vue'
+import TextField from '@/components/TextField.vue'
 
-const showModal = ref(false);
+const showModal = ref(false)
 
 const openModal = () => {
-  showModal.value = true;
-  document.body.classList.add("no-scroll");
-};
+  showModal.value = true
+  document.body.classList.add('no-scroll')
+}
 
 const closeModal = () => {
-  showModal.value = false;
-  document.body.classList.remove("no-scroll");
-};
+  showModal.value = false
+  document.body.classList.remove('no-scroll')
+}
 </script>
 
 <style>
