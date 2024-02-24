@@ -3,7 +3,8 @@ import { toggleShowErrorMessageModal } from './actions'
 
 export const useModalStore = defineStore('useModalStore', {
   state: () => ({
-    showErrorMessageModal: false
+    showErrorMessageModal: false,
+    showLoginFormModal: false
   }),
   actions: {
     toggleShowErrorMessageModal
