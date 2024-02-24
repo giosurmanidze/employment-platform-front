@@ -26,7 +26,8 @@ const props = defineProps({
   showError: {
     type: Boolean,
     required: false
-  }
+  },
+  error: { type: String, required: false }
 })
 const inputType = computed(() => (showPassword.value ? 'text' : props.type))
 function togglePasswordVisibility() {
@@ -54,6 +55,7 @@ function togglePasswordVisibility() {
       class="pointer-events-none text-sm font-medium absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
       >პაროლი</label
     >
+    <div v-if="error">{{ error }}</div>
     <ErrorMessage v-if="showError" :name="name" class="text-black xs:text-sm sm:text-base" />
     <span
       v-if="type === 'password'"

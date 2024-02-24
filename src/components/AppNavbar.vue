@@ -1,22 +1,23 @@
 <script setup>
-import { ref } from "vue";
-import TextField from "@/components/TextField.vue";
-import { Form } from "vee-validate";
-import { useLoginSubmit } from "@/services/index";
+import { ref } from 'vue'
+import TextField from '@/components/TextField.vue'
+import { Form } from 'vee-validate'
+import { useLoginSubmit } from '@/services/index'
 
-const showModal = ref(false);
+const showModal = ref(false)
 
-const { submit } = useLoginSubmit();
+const { submit, Error } = useLoginSubmit()
 
 const openModal = () => {
-  showModal.value = true;
-  document.body.classList.add("no-scroll");
-};
+  showModal.value = true
+  document.body.classList.add('no-scroll')
+}
 
 const closeModal = () => {
-  showModal.value = false;
-  document.body.classList.remove("no-scroll");
-};
+  showModal.value = false
+  document.body.classList.remove('no-scroll')
+  Error.value = ''
+}
 </script>
 
 <template>
@@ -49,11 +50,14 @@ const closeModal = () => {
             name="username"
             type="text"
             label="username"
+            rules="required"
+            :error="Error"
             :has-error="errors.username"
           />
           <text-field
             name="password"
             type="password"
+            rules="required"
             label="password"
             :has-error="errors.password"
           />
