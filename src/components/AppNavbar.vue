@@ -1,3 +1,24 @@
+<script setup>
+import { ref } from "vue";
+import TextField from "@/components/TextField.vue";
+import { Form } from "vee-validate";
+import { useLoginSubmit } from "@/services/index";
+
+const showModal = ref(false);
+
+const { submit } = useLoginSubmit();
+
+const openModal = () => {
+  showModal.value = true;
+  document.body.classList.add("no-scroll");
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  document.body.classList.remove("no-scroll");
+};
+</script>
+
 <template>
   <div class="w-full bg-gray-200 h-16">
     <button @click="openModal">Log in</button>
@@ -19,9 +40,23 @@
         </div>
 
         <!-- input fields -->
-        <div class="flex flex-col items-center justify-center mt-4 gap-1">
-          <text-field name="username" type="text" label="username" />
-          <text-field name="password" type="password" label="password" />
+        <Form
+          @submit="submit"
+          v-slot="{ errors, meta }"
+          class="flex flex-col items-center justify-center mt-4 gap-1"
+        >
+          <text-field
+            name="username"
+            type="text"
+            label="username"
+            :has-error="errors.username"
+          />
+          <text-field
+            name="password"
+            type="password"
+            label="password"
+            :has-error="errors.password"
+          />
           <div
             class="flex w-[90%] font-medium text-[#8f9b9a] text-[0.775rem] underline cursor-pointer"
           >
@@ -30,6 +65,7 @@
           <div class="relative mt-1 mb-3 w-[90%]">
             <button
               type="submit"
+              :disabled="!meta.valid"
               class="bg-[#326563] text-white opacity-70 m-0 block h-[58px] rounded-xl w-full"
             >
               ავტორიზაცია
@@ -41,28 +77,11 @@
               >გაიარე რეგისტრაცია და შექმენი პროფილი</span
             >
           </div>
-        </div>
+        </Form>
       </div>
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-import TextField from '@/components/TextField.vue'
-
-const showModal = ref(false)
-
-const openModal = () => {
-  showModal.value = true
-  document.body.classList.add('no-scroll')
-}
-
-const closeModal = () => {
-  showModal.value = false
-  document.body.classList.remove('no-scroll')
-}
-</script>
 
 <style>
 .no-scroll {
