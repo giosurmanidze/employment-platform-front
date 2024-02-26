@@ -4,8 +4,10 @@ import { Form } from 'vee-validate'
 import { useLoginSubmit } from '@/services/index'
 import { useModalStore } from '@/stores/modal/useModalStore'
 import AlertModal from './AlertModal.vue'
+import { useRouter } from 'vue-router'
 
 const { submit, Error } = useLoginSubmit()
+const router = useRouter()
 const { toggleShowErrorMessageModal } = useModalStore()
 const modalStore = useModalStore()
 
@@ -15,13 +17,18 @@ const closeModal = () => {
   Error.value = ''
   modalStore.showErrorMessageModal = false
 }
+
+const moveToForgotPage = () => {
+  modalStore.showLoginFormModal = false
+  router.push({ name: 'forgotPassword' })
+}
 </script>
 
 <template>
   <Transition name="fade">
     <div
       v-if="modalStore.showLoginFormModal"
-      class="fixed inset-0 flex justify-center bg-gray-500 bg-opacity-50 xs:ml-2"
+      class="fixed inset-0 flex justify-center bg-gray-500 bg-opacity-50 xs:ml-2 z-50"
       @click="closeModal"
     >
       <div class="bg-white pt-4 rounded-2xl h-[23rem] w-[32rem] mt-10" @click.stop>
@@ -62,16 +69,19 @@ const closeModal = () => {
             label="პაროლი"
             :has-error="errors.password"
           />
-          <div
+          <button
+            @click="moveToForgotPage"
+            type="button"
+            to="forgotPassword"
             class="flex w-[90%] font-medium text-[#8f9b9a] text-[0.775rem] underline cursor-pointer"
           >
             დაგავიწყდა პაროლი?
-          </div>
+          </button>
           <div class="relative mt-1 mb-3 w-[90%]">
             <button
               type="submit"
               :disabled="!meta.valid"
-              class="bg-[#326563] text-white opacity-70 m-0 block h-[58px] rounded-xl w-full"
+              class="bg-[#5598d4] text-white m-0 block h-[58px] rounded-2xl w-full"
             >
               ავტორიზაცია
             </button>
