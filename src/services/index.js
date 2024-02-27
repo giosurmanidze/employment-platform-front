@@ -9,14 +9,16 @@ export const useLoginSubmit = () => {
   const { t } = useI18n()
   const modalStore = useModalStore()
 
-  const submit = async (values) => {
+  const submit = async (values, { resetForm }) => {
     try {
       const response = await axios.post('/login', values)
       localStorage.setItem('jwt_token', response.data?.access_token)
+      modalStore.showLoginErrorMessageModal = false
+      resetForm()
       Error.value = ''
       return response
     } catch (error) {
-      modalStore.showErrorMessageModal = true
+      modalStore.showLoginErrorMessageModal = true
       Error.value = t('incorrect_credentials')
     }
   }
@@ -27,32 +29,38 @@ export const useLoginSubmit = () => {
 export const useForgorPasswordSubmit = () => {
   const modalStore = useModalStore()
   const Error = ref('')
+  const Success = ref('')
   const { t } = useI18n()
 
-  const submit = async (values) => {
+  const submit = async (values, { resetForm }) => {
     try {
       const response = await axios.post('/forgot-password', values)
       Error.value = ''
-      console.log(response)
+      modalStore.showSuccessMessageModal = true
+      Success.value = t('check_email')
+      resetForm()
+      return response
     } catch (error) {
-      modalStore.showErrorMessageModal = true
+      modalStore.showPasswordErrorMessageModal = true
       Error.value = t('incorrect_email')
     }
   }
   return {
     submit,
-    Error
+    Error,
+    Success
   }
 }
 
 export const useResetPasswordSubmit = () => {
   const { email, token } = useRoute().query
 
-  const submit = async (values) => {
+  const submit = async (values, { resetForm }) => {
     try {
       values.email = email
       values.token = token
       const response = await axios.post('/reset-password', values)
+      resetForm()
       return response
     } catch (error) {
       console.log(error)

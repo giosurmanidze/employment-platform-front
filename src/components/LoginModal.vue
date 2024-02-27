@@ -1,27 +1,27 @@
 <script setup>
-import TextField from '@/components/TextField.vue'
-import { Form } from 'vee-validate'
-import { useLoginSubmit } from '@/services/index'
-import { useModalStore } from '@/stores/modal/useModalStore'
-import AlertModal from './AlertModal.vue'
-import { useRouter } from 'vue-router'
+import TextField from "@/components/TextField.vue";
+import { Form } from "vee-validate";
+import { useLoginSubmit } from "@/services/index";
+import { useModalStore } from "@/stores/modal/useModalStore";
+import AlertModal from "./AlertModal.vue";
+import { useRouter } from "vue-router";
 
-const { submit, Error } = useLoginSubmit()
-const router = useRouter()
-const { toggleShowErrorMessageModal } = useModalStore()
-const modalStore = useModalStore()
+const { submit, Error } = useLoginSubmit();
+const router = useRouter();
+const { toggleShowLoginErrorMessageModal } = useModalStore();
+const modalStore = useModalStore();
 
 const closeModal = () => {
-  modalStore.showLoginFormModal = false
-  document.body.classList.remove('no-scroll')
-  Error.value = ''
-  modalStore.showErrorMessageModal = false
-}
+  modalStore.showLoginFormModal = false;
+  document.body.classList.remove("no-scroll");
+  Error.value = "";
+  modalStore.showLoginErrorMessageModal = false;
+};
 
 const moveToForgotPage = () => {
-  modalStore.showLoginFormModal = false
-  router.push({ name: 'forgotPassword' })
-}
+  modalStore.showLoginFormModal = false;
+  router.push({ name: "forgotPassword" });
+};
 </script>
 
 <template>
@@ -48,9 +48,9 @@ const moveToForgotPage = () => {
         >
           <Transition name="bounce">
             <AlertModal
-              classes="right-30 top-[-6rem] absolute"
-              v-if="modalStore.showErrorMessageModal"
-              :alertUpdate="toggleShowErrorMessageModal"
+              classes="right-30 top-[-6rem] absolute bg-[#EA7171]"
+              v-if="modalStore.showLoginErrorMessageModal"
+              :alertUpdate="toggleShowLoginErrorMessageModal"
               :bottom_locale_text="Error"
             />
           </Transition>

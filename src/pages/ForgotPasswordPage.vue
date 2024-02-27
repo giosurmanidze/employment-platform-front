@@ -5,8 +5,11 @@ import { useForgorPasswordSubmit } from "@/services";
 import { useModalStore } from "@/stores/modal/useModalStore";
 import { Form } from "vee-validate";
 
-const { submit, Error } = useForgorPasswordSubmit();
-const { toggleShowErrorMessageModal } = useModalStore();
+const { submit, Error, Success } = useForgorPasswordSubmit();
+const {
+  toggleShowForgotErrorMessageModal,
+  toggleShowSuccessMessageModal,
+} = useModalStore();
 const modalStore = useModalStore();
 </script>
 
@@ -22,10 +25,18 @@ const modalStore = useModalStore();
     <div class="w-1/2 ml-10 flex items-center relative">
       <Transition name="bounce">
         <AlertModal
-          classes="right-30 top-[-6rem] absolute"
-          v-if="modalStore.showErrorMessageModal"
-          :alertUpdate="toggleShowErrorMessageModal"
+          classes="right-30 top-[-6rem] absolute bg-[#EA7171]"
+          v-if="modalStore.showPasswordErrorMessageModal"
+          :alertUpdate="toggleShowForgotErrorMessageModal"
           :bottom_locale_text="Error"
+        />
+      </Transition>
+      <Transition name="bounce">
+        <AlertModal
+          classes="right-30 top-[-6rem] absolute bg-[#71ea71]"
+          v-if="modalStore.showSuccessMessageModal"
+          :alertUpdate="toggleShowSuccessMessageModal"
+          :bottom_locale_text="Success"
         />
       </Transition>
       <Form
@@ -38,8 +49,8 @@ const modalStore = useModalStore();
           name="email"
           type="text"
           label="მიუთითეთ ელ.ფოსტა"
-          rules="required"
-          :has-error="errors.username"
+          rules="required|email"
+          :has-error="errors.email"
         />
         <div class="relative mt-1 mb-3 w-[90%]">
           <button

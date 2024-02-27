@@ -1,12 +1,20 @@
 import { defineStore } from 'pinia'
-import { toggleShowErrorMessageModal } from './actions'
+import {
+  toggleShowLoginErrorMessageModal,
+  toggleShowSuccessMessageModal,
+  toggleShowForgotErrorMessageModal
+} from './actions'
 
 export const useModalStore = defineStore('useModalStore', {
   state: () => ({
-    showErrorMessageModal: false,
-    showLoginFormModal: false
+    showLoginErrorMessageModal: false,
+    showLoginFormModal: false,
+    showSuccessMessageModal: false,
+    showPasswordErrorMessageModal: false
   }),
   actions: {
-    toggleShowErrorMessageModal
+    toggleShowLoginErrorMessageModal,
+    toggleShowSuccessMessageModal,
+    toggleShowForgotErrorMessageModal
   }
 })

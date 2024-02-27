@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="showAlert"
-    class="bg-[#EA7171] p-3 text-alert_text_color z-10 h-16 w-72 flex rounded-sm"
+    class="p-3 text-alert_text_color z-10 h-16 w-72 flex rounded-sm"
     :class="classes"
   >
     <section class="flex justify-between">
