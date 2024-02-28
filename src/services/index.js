@@ -90,3 +90,13 @@ export const useRegisterSubmit = () => {
     submit
   }
 }
+
+export const makeEmailVerifiedSubmit = async () => {
+  const { email } = useRoute().query
+  try {
+    const response = await axios.post('/email/verify', { email })
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}

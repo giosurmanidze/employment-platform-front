@@ -3,6 +3,7 @@ import HomePage from '@/pages/HomePage.vue'
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage.vue'
 import ResetPasswordPage from '@/pages/ResetPasswordPage.vue'
 import RegistrationPage from '@/pages/RegistrationPage.vue'
+import SuccessVerifiedPage from '@/pages/SuccessVerifiedPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/registration',
       name: 'registration',
       component: RegistrationPage
+    },
+    {
+      path: '/success-verified',
+      name: 'successVerified',
+      component: SuccessVerifiedPage
     }
   ]
 })
