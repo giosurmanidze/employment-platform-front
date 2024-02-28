@@ -16,5 +16,5 @@ export const useModalStore = defineStore('useModalStore', {
     toggleShowLoginErrorMessageModal,
     toggleShowSuccessMessageModal,
     toggleShowForgotErrorMessageModal
-  }
+  },
 })

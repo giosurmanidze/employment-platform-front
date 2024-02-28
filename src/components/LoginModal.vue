@@ -8,6 +8,7 @@ import { useRouter } from "vue-router";
 
 const { submit, Error } = useLoginSubmit();
 const router = useRouter();
+
 const { toggleShowLoginErrorMessageModal } = useModalStore();
 const modalStore = useModalStore();
 
@@ -22,6 +23,10 @@ const moveToForgotPage = () => {
   modalStore.showLoginFormModal = false;
   router.push({ name: "forgotPassword" });
 };
+const moveToRegisterPage = () => {
+  modalStore.showLoginFormModal = false;
+  router.push({ name: "registration" });
+};
 </script>
 
 <template>
@@ -34,7 +39,7 @@ const moveToForgotPage = () => {
       <div class="bg-white pt-4 rounded-2xl h-[23rem] w-[32rem] mt-10" @click.stop>
         <div class="flex flex-col items-center">
           <div class="w-[90%] flex justify-between">
-            <h2 class="text-[#326563] font-bold">ავტორიზაცია</h2>
+            <h2 class="text-main_text_color font-bold">ავტორიზაცია</h2>
             <button @click.stop="closeModal">
               <img src="@/assets/images/cross.png" />
             </button>
@@ -48,7 +53,7 @@ const moveToForgotPage = () => {
         >
           <Transition name="bounce">
             <AlertModal
-              classes="right-30 top-[-6rem] absolute bg-[#EA7171]"
+              classes="right-30 top-[-6rem] absolute bg-error_modal_bg"
               v-if="modalStore.showLoginErrorMessageModal"
               :alertUpdate="toggleShowLoginErrorMessageModal"
               :bottom_locale_text="Error"
@@ -73,7 +78,7 @@ const moveToForgotPage = () => {
             @click="moveToForgotPage"
             type="button"
             to="forgotPassword"
-            class="flex w-[90%] font-medium text-[#8f9b9a] text-[0.775rem] underline cursor-pointer"
+            class="flex w-[90%] font-medium text-secondary_text_color text-[0.775rem] underline cursor-pointer"
           >
             დაგავიწყდა პაროლი?
           </button>
@@ -81,16 +86,20 @@ const moveToForgotPage = () => {
             <button
               type="submit"
               :disabled="!meta.valid"
-              class="bg-[#5598d4] text-white m-0 block h-[58px] rounded-2xl w-full"
+              class="bg-main_bg_color text-white m-0 block h-[58px] rounded-2xl w-full"
             >
               ავტორიზაცია
             </button>
           </div>
           <div class="flex w-[90%] text-[0.825rem] font-medium">
-            <span class="text-[#8f9b9a]">არ გაქვს ანგარიში?</span>
-            <span class="text-[#326563] pl-1 underline cursor-pointer"
-              >გაიარე რეგისტრაცია და შექმენი პროფილი</span
+            <span class="text-secondary_text_color">არ გაქვს ანგარიში?</span>
+            <button
+              type="button"
+              @click="moveToRegisterPage"
+              class="text-main_text_color pl-1 underline cursor-pointer"
             >
+              გაიარე რეგისტრაცია და შექმენი პროფილი
+            </button>
           </div>
         </Form>
       </div>

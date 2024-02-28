@@ -71,3 +71,19 @@ export const useResetPasswordSubmit = () => {
     submit
   }
 }
+
+export const useRegisterSubmit = () => {
+  const submit = async (values, { resetForm, setFieldError }) => {
+    try {
+      const response = await axios.post('/register', values)
+      resetForm()
+      return response
+    } catch (error) {
+      setFieldError('email', error.response.data.errors.email[0])
+    }
+  }
+
+  return {
+    submit
+  }
+}

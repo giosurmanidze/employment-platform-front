@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-if="showAlert"
-    class="p-3 text-alert_text_color z-10 h-16 w-72 flex rounded-sm"
-    :class="classes"
-  >
+  <div v-if="showAlert" class="p-3 z-10 h-16 w-72 flex rounded-sm" :class="classes">
     <section class="flex justify-between">
       <div class="cursor-pointer">
         <CrossIcon @click="alertUpdate(false)" />
@@ -21,9 +17,6 @@ import CrossIcon from "@/assets/icons/CrossIcon.vue";
 
 defineProps({
   classes: { required: true, type: String },
-  top_locale_text: {
-    type: String,
-  },
   bottom_locale_text: {
     type: String,
   },

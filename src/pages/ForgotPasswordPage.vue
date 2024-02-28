@@ -6,15 +6,16 @@ import { useModalStore } from "@/stores/modal/useModalStore";
 import { Form } from "vee-validate";
 
 const { submit, Error, Success } = useForgorPasswordSubmit();
+const modalStore = useModalStore();
+
 const {
   toggleShowForgotErrorMessageModal,
   toggleShowSuccessMessageModal,
 } = useModalStore();
-const modalStore = useModalStore();
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-[80vh] bg-[#f8f7fa]">
+  <div class="flex justify-center items-center h-[80vh] bg-white">
     <div class="text-[40px]">
       <pre class="text-[#2F384D] font-black">
         გთხოვთ შეიყვანეთ 
