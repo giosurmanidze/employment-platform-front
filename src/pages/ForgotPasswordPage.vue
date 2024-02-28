@@ -15,15 +15,17 @@ const {
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-[80vh] bg-white">
-    <div class="text-[40px]">
-      <pre class="text-[#2F384D] font-black">
-        გთხოვთ შეიყვანეთ 
-        თქვენი არსებული ელ.ფოსტა 
-        და აღადგინეთ პაროლი 
-      </pre>
+  <div
+    class="flex sm:flex-col lg:flex-row lg:items-center justify-center sm:gap-10 lg:gap-20 w-full h-[80vh] bg-white"
+  >
+    <div
+      class="sm:text-[25px] lg:text-[40px] lg:w-1/2 flex lg:justify-end sm:justify-center sm:px-5 lg:p-0"
+    >
+      <span class="text-[#2F384D] font-black lg:w-[30rem] sm:w-[35rem]">
+        გთხოვთ შეიყვანეთ თქვენი არსებული ელ.ფოსტა და აღადგინეთ პაროლი
+      </span>
     </div>
-    <div class="w-1/2 ml-10 flex items-center relative">
+    <div class="lg:w-1/2 flex relative lg:justify-start sm:justify-center sm:px-5 lg:p-0">
       <Transition name="bounce">
         <AlertModal
           classes="right-30 top-[-6rem] absolute bg-[#EA7171]"
@@ -43,7 +45,7 @@ const {
       <Form
         @submit="submit"
         v-slot="{ errors, meta }"
-        class="w-[30rem] h-[15rem] bg-[#f8f7fa] flex flex-col items-center gap-4 border-2 border-gray-100 shadow-md rounded-3xl py-5"
+        class="lg:w-[30rem] sm:w-[35rem] h-[25rem] bg-[#f8f7fa] flex flex-col items-center gap-4 border-2 border-gray-100 shadow-md rounded-3xl py-5"
       >
         <h1 class="text-xl">აღადგინე პაროლი</h1>
         <TextField

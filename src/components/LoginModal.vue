@@ -33,10 +33,13 @@ const moveToRegisterPage = () => {
   <Transition name="fade">
     <div
       v-if="modalStore.showLoginFormModal"
-      class="fixed inset-0 flex justify-center bg-gray-500 bg-opacity-50 xs:ml-2 z-50"
+      class="fixed inset-0 flex justify-center bg-black sm:p-3 md:pt-10 bg-opacity-50 z-50"
       @click="closeModal"
     >
-      <div class="bg-white pt-4 rounded-2xl h-[23rem] w-[32rem] mt-10" @click.stop>
+      <div
+        class="bg-white pt-4 rounded-2xl sm:h-[24rem] md:h-[23rem] w-[32rem]"
+        @click.stop
+      >
         <div class="flex flex-col items-center">
           <div class="w-[90%] flex justify-between">
             <h2 class="text-main_text_color font-bold">ავტორიზაცია</h2>
@@ -44,7 +47,7 @@ const moveToRegisterPage = () => {
               <img src="@/assets/images/cross.png" />
             </button>
           </div>
-          <div class="h-[1px] bg-gray-200 w-full mt-4"></div>
+          <div class="md:h-[1px] bg-gray-200 w-full mt-4"></div>
         </div>
         <Form
           @submit="submit"
@@ -53,7 +56,7 @@ const moveToRegisterPage = () => {
         >
           <Transition name="bounce">
             <AlertModal
-              classes="right-30 top-[-6rem] absolute bg-error_modal_bg"
+              classes="right-14 sm:top-[-5rem] md:top-[-6rem] absolute bg-error_modal_bg"
               v-if="modalStore.showLoginErrorMessageModal"
               :alertUpdate="toggleShowLoginErrorMessageModal"
               :bottom_locale_text="Error"
@@ -78,7 +81,7 @@ const moveToRegisterPage = () => {
             @click="moveToForgotPage"
             type="button"
             to="forgotPassword"
-            class="flex w-[90%] font-medium text-secondary_text_color text-[0.775rem] underline cursor-pointer"
+            class="flex w-[90%] pl-2 font-medium text-secondary_text_color text-[0.775rem] underline cursor-pointer"
           >
             დაგავიწყდა პაროლი?
           </button>
@@ -91,8 +94,10 @@ const moveToRegisterPage = () => {
               ავტორიზაცია
             </button>
           </div>
-          <div class="flex w-[90%] text-[0.825rem] font-medium">
-            <span class="text-secondary_text_color">არ გაქვს ანგარიში?</span>
+          <div
+            class="flex sm:flex-col sm:items-start md:flex-row justify-center w-[90%] text-[0.775rem] font-medium"
+          >
+            <span class="text-secondary_text_color pl-1">არ გაქვს ანგარიში?</span>
             <button
               type="button"
               @click="moveToRegisterPage"

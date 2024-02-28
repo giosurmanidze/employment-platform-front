@@ -11,19 +11,21 @@ const modalStore = useModalStore();
 </script>
 
 <template>
-  <div class="flex justify-center gap-10 items-center h-[80vh] bg-[#f8f7fa]">
-    <div>
-      <pre class="text-[#2F384D] font-black text-[40px]">
-        მოძებნე შენზე 
-        მორგებული სამსახური
-        შენთან ახლოს
-      </pre>
+  <div
+    class="flex sm:flex-col lg:flex-row lg:items-center justify-start sm:gap-10 lg:gap-20 w-full h-[80vh] bg-white"
+  >
+    <div
+      class="sm:text-[25px] lg:text-[40px] lg:w-1/2 flex lg:justify-end sm:justify-center sm:px-5 lg:p-0"
+    >
+      <span class="text-[#2F384D] font-black lg:w-[30rem] sm:w-[35rem]">
+        მოძებნე შენზე მორგებული სამსახური შენთან ახლოს
+      </span>
     </div>
-    <div class="w-1/2 ml-10 flex items-center">
+    <div class="lg:w-1/2 flex relative lg:justify-start sm:justify-center sm:px-5 lg:p-0">
       <Form
         @submit="submit"
         v-slot="{ errors, meta }"
-        class="w-[30rem] h-[32rem] bg-[#f8f7fa] flex flex-col items-center gap-4 rounded-3xl py-5 relative"
+        class="lg:w-[30rem] sm:w-[35rem] sm:h-[35rem] bg-[#f8f7fa] flex flex-col items-center gap-4 border-2 border-gray-100 shadow-md rounded-3xl py-5"
       >
         <Transition name="bounce">
           <AlertModal
