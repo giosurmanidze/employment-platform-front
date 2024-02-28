@@ -33,7 +33,7 @@ const moveToRegisterPage = () => {
   <Transition name="fade">
     <div
       v-if="modalStore.showLoginFormModal"
-      class="fixed inset-0 flex justify-center bg-black sm:p-3 md:pt-10 bg-opacity-50 z-50"
+      class="fixed inset-0 flex justify-center bg-black sm:p-3 md:pt-10 bg-opacity-60 z-50"
       @click="closeModal"
     >
       <div
@@ -47,7 +47,7 @@ const moveToRegisterPage = () => {
               <img src="@/assets/images/cross.png" />
             </button>
           </div>
-          <div class="md:h-[1px] bg-gray-200 w-full mt-4"></div>
+          <div class="md:h-[0.063rem] bg-gray-200 w-full mt-4"></div>
         </div>
         <Form
           @submit="submit"
@@ -89,7 +89,7 @@ const moveToRegisterPage = () => {
             <button
               type="submit"
               :disabled="!meta.valid"
-              class="bg-main_bg_color text-white m-0 block h-[58px] rounded-2xl w-full"
+              class="bg-main_bg_color text-white m-0 block h-14 rounded-2xl w-full"
             >
               ავტორიზაცია
             </button>

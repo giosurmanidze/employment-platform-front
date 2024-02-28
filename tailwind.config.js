@@ -4,10 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        main_text_color: '#326563',
+        main_text_color: '#2F384D',
         main_bg_color: '#5598d4',
         error_modal_bg: '#EA7171',
-        secondary_text_color: '#8f9b9a'
+        success_modal_bg: '#71ea71',
+        secondary_text_color: '#8f9b9a',
+        form_bg_color: '#f8f7fa'
       },
       screens: {
         sm: '320px',
