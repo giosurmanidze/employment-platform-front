@@ -2,8 +2,12 @@
 import TextField from "@/components/TextField.vue";
 import { useRegisterSubmit } from "@/services";
 import { Form } from "vee-validate";
+import { useModalStore } from "@/stores/modal/useModalStore";
+import AlertModal from "@/components/AlertModal.vue";
 
 const { submit } = useRegisterSubmit();
+const { toggleShowSuccessSentEmailModal } = useModalStore();
+const modalStore = useModalStore();
 </script>
 
 <template>
@@ -19,8 +23,16 @@ const { submit } = useRegisterSubmit();
       <Form
         @submit="submit"
         v-slot="{ errors, meta }"
-        class="w-[30rem] h-[32rem] bg-[#f8f7fa] flex flex-col items-center gap-4 rounded-3xl py-5"
+        class="w-[30rem] h-[32rem] bg-[#f8f7fa] flex flex-col items-center gap-4 rounded-3xl py-5 relative"
       >
+        <Transition name="bounce">
+          <AlertModal
+            classes="right-[25rem] top-[-3rem] absolute bg-[#71ea71]"
+            v-if="modalStore.showSuccessSentEmailModal"
+            :alertUpdate="toggleShowSuccessSentEmailModal"
+            bottom_locale_text="გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა"
+          />
+        </Transition>
         <h1 class="text-xl">გაიარეთ რეგისტრაცია</h1>
         <TextField
           name="username"

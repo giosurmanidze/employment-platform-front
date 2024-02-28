@@ -73,9 +73,12 @@ export const useResetPasswordSubmit = () => {
 }
 
 export const useRegisterSubmit = () => {
+  const modalStore = useModalStore()
+
   const submit = async (values, { resetForm, setFieldError }) => {
     try {
       const response = await axios.post('/register', values)
+      modalStore.showSuccessSentEmailModal = true
       resetForm()
       return response
     } catch (error) {
