@@ -1,3 +1,9 @@
+<script setup>
+import PremiumPlusCarousel from "@/components/PremiumPlusCarousel.vue";
+</script>
+
 <template>
-  <h1>This is home page</h1>
+  <div class="h-screen">
+    <PremiumPlusCarousel />
+  </div>
 </template>
