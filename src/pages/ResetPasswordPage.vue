@@ -13,7 +13,9 @@ const { submit } = useResetPasswordSubmit();
     <div
       class="sm:text-[1.625rem] lg:text-[2.5rem] lg:w-1/2 flex lg:justify-end sm:justify-center sm:px-5 lg:p-0"
     >
-      <span class="text-main_text_color font-black lg:w-[30rem] sm:w-[35rem]">
+      <span
+        class="text-main_text_color font-black lg:w-[30rem] sm:w-[35rem] sm:text-center lg:text-left"
+      >
         გთხოვთ შეიყვანეთ ახალი პაროლი, რომლითაც შემდეგში ისარგებლებთ
       </span>
     </div>
