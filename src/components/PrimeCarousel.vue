@@ -16,6 +16,8 @@ const { vacancies } = storeToRefs(useVacancyStore())
 onMounted(() => {
   getVacancies()
 })
+
+const backendImageUrl = import.meta.env.VITE_IMAGE_URL
 </script>
 
 <template>
@@ -30,7 +32,7 @@ onMounted(() => {
         <div class="mb-3 bg-primary h-[17rem] rounded-2xl p-3 flex flex-col gap-5 text-white">
           <div class="relative mx-auto w-full flex justify-between items-center">
             <img
-              :src="`http://localhost:8000/storage/${slotProps.data.creator.image}`"
+              :src="`${backendImageUrl + slotProps.data.creator.image}`"
               :alt="slotProps.data.image"
               class="w-[5rem] h-[5rem] rounded-full"
             />
