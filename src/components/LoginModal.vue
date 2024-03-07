@@ -89,7 +89,7 @@ const moveToRegisterPage = () => {
             <button
               type="submit"
               :disabled="!meta.valid"
-              class="bg-main_bg_color text-white m-0 block h-14 rounded-2xl w-full"
+              class="bg-primary text-white m-0 block h-14 rounded-2xl w-full"
             >
               ავტორიზაცია
             </button>

@@ -1,3 +1,9 @@
+<script setup>
+import BannerContent from '@/components/BannerContent.vue'
+</script>
+
 <template>
-  <h1>This is home page</h1>
+  <div class="h-screen bg-main_bg_color">
+    <BannerContent />
+  </div>
 </template>
