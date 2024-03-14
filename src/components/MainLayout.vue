@@ -11,4 +11,3 @@ import AppFooter from "./AppFooter.vue";
     <app-footer />
   </div>
 </template>
-./AppNavar.vue
