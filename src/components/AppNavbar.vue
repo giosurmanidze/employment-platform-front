@@ -25,19 +25,12 @@ const toggleMode = () => {
 <template>
   <nav>
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a
-        href="https://flowbite.com/"
-        class="flex items-center space-x-3 rtl:space-x-reverse"
-      >
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-8"
-          alt="Flowbite Logo"
-        />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+      <div class="flex gap-2">
+        <img src="@/assets/images/app-logo.png" width="50" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap text-primary"
           >EmploWeb</span
         >
-      </a>
+      </div>
       <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse md:gap-4">
         <button
           class="hover:bg-primary sm:hidden lg:block z-50 hover:text-white border-[2px] text-sm border-primary text-primary rounded-lg px-2"
