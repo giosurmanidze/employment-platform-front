@@ -28,8 +28,18 @@
         <button
           class="h-20 bg-orange_red_color outline-none p-5 md:rounded-tr-3xl sm:rounded-bl-3xl md:rounded-bl-none sm:rounded-br-3xl flex justify-center items-center"
         >
-          <img src="@/assets/images/search.png" class="sm:hidden md:block" width="60" height="60" />
-          <img src="@/assets/images/search.png" class="sm:block md:hidden" width="40" height="40" />
+          <img
+            src="@/assets/images/search.png"
+            class="sm:hidden md:block"
+            width="60"
+            height="60"
+          />
+          <img
+            src="@/assets/images/search.png"
+            class="sm:block md:hidden"
+            width="40"
+            height="40"
+          />
         </button>
       </form>
     </div>

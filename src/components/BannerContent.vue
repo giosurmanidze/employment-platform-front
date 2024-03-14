@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar.vue";
 </script>
 
 <template>
-  <div class="h-screen flex flex-col justify-center gap-[5rem]">
+  <div class="h-screen flex flex-col justify-center gap-[5rem] bg-main_bg_color">
     <SearchBar />
     <PrimeCarousel />
   </div>
