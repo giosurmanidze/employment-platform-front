@@ -1,11 +1,11 @@
 <script setup>
-import { RouterView } from "vue-router";
-import AppNavbar from "./AppNavbar.vue";
+import { RouterView } from 'vue-router'
+import NavBar from './NavBar.vue'
 </script>
 
 <template>
   <div>
-    <app-navbar />
+    <nav-bar />
     <router-view />
     <!-- <footer v-if="authStore.authenticated" /> -->
   </div>

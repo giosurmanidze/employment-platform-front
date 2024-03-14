@@ -1,5 +1,5 @@
 <script setup>
-import BannerContent from '@/components/BannerContent.vue'
+import BannerContent from "@/components/BannerContent.vue";
 </script>
 
 <template>

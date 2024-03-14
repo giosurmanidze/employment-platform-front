@@ -12,10 +12,10 @@ const modalStore = useModalStore();
 
 <template>
   <div
-    class="flex sm:flex-col lg:flex-row lg:items-center justify-start sm:gap-5 lg:gap-20 w-full h-[80vh] bg-white"
+    class="flex sm:flex-col lg:flex-row lg:items-center justify-start sm:gap-5 lg:gap-20 w-full h-[80vh] bg-main_bg_color"
   >
     <div
-      class="sm:text-[1.625rem] lg:text-[2.5rem] lg:w-1/2 flex lg:justify-end sm:justify-center sm:px-5 lg:p-0"
+      class="sm:text-[1.625rem] lg:text-[2.5rem] sm:mt-5 lg:mt-0 lg:w-1/2 flex lg:justify-end sm:justify-center sm:px-5 lg:p-0"
     >
       <span
         class="text-main_text_color font-black lg:w-[30rem] sm:w-[35rem] sm:text-center lg:text-left"
